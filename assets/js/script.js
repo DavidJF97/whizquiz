@@ -101,3 +101,11 @@ function renderQuestion() {
 } 
 
 renderQuestion();
+renderProgress();
+
+/**Function to render progress */
+function renderProgress() {
+    for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    }
+}
