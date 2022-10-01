@@ -1,12 +1,15 @@
 const start = document.getElementById("start");
 const quiz =  document.getElementById("quiz");
+const progress = document.getElementById("question-num")
 const question = document.getElementById("question");
 const questionPic = document.getElementById("question-pic");
 const optionA = document.getElementById("A");
 const optionB = document.getElementById("B");
 const optionC = document.getElementById("C");
-const progress = document.getElementById("progress");
-const score = document.getElementById("score");
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
+// const progress = document.getElementById("progress");
+const score = document.getElementById("scoreContainer");
 
 /** All the questions*/
 
@@ -89,6 +92,9 @@ let questions = [
 const lastQuestion = question.length - 1;
 let runningQuestion = 0;
 
+/** Rendering question number out of 10 */
+progress.textContent= runningQuestion+1+"/10"
+
 /**Function to render questions*/
 function renderQuestion() {
     let q = questions[runningQuestion];
@@ -101,11 +107,22 @@ function renderQuestion() {
 } 
 
 renderQuestion();
-renderProgress();
 
-/**Function to render progress */
-function renderProgress() {
-    for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+/**Function to check answers */
+function checkAnswer(answer) {
+    if ( answer == questions[runningQuestion].correct) {
+        score++;
+        answerIsCorrect();
+    } else {
+        answerIsWrong();
     }
+    count = 0;
+}
+
+function answerIsCorrect(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+}
+
+function answerIsWrong(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
 }
