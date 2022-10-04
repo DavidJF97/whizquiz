@@ -3,13 +3,10 @@ const quiz =  document.getElementById("quiz");
 const progress = document.getElementById("question-num")
 const question = document.getElementById("question");
 const questionPic = document.getElementById("question-pic");
-const optionA = document.getElementById("A");
-const optionB = document.getElementById("B");
-const optionC = document.getElementById("C");
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-// const progress = document.getElementById("progress");
-const score = document.getElementById("scoreContainer");
+const optionA = document.getElementById("optionA");
+const optionB = document.getElementById("optionB");
+const optionC = document.getElementById("optionC");
+let scoreDisplay = document.getElementById("score-display");
 
 /** All the questions*/
 
@@ -89,11 +86,15 @@ let questions = [
 
 /**Variables for questions */
 
-const lastQuestion = question.length - 1;
+let lastQuestion = question.length - 1;
 let runningQuestion = 0;
+let score = 0;
 
-/** Rendering question number out of 10 */
-progress.textContent= runningQuestion+1+"/10"
+/** Rendering display of progress through quiz*/
+progress.textContent= runningQuestion+1+"/10";
+
+/**Rendering score */
+scoreDisplay.textContent = score;
 
 /**Function to render questions*/
 function renderQuestion() {
@@ -109,20 +110,43 @@ function renderQuestion() {
 renderQuestion();
 
 /**Function to check answers */
-function checkAnswer(answer) {
-    if ( answer == questions[runningQuestion].correct) {
+
+    optionA.addEventListener("click", checkAnswer);
+    optionB.addEventListener("click", checkAnswer);
+    optionC.addEventListener("click", checkAnswer);
+
+function checkAnswer() {
+
+    if ( this.value == questions[runningQuestion].correct) {
         score++;
-        answerIsCorrect();
+        scoreDisplay.textContent = score;
+        this.style.backgroundColor = "green";
+        this.style.color = "white";
+        runningQuestion++;
+        setTimeout(nextQuestion, 1000);
     } else {
-        answerIsWrong();
+        this.style.backgroundColor = "red";
+        this.style.color = "white";
+        runningQuestion++;
+        setTimeout(nextQuestion, 1000);
     }
-    count = 0;
 }
 
-function answerIsCorrect(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+/**Function to move on to next question after player's choice is checked */
+function nextQuestion() {
+
+    resetOptions()
+    renderQuestion()
 }
 
-function answerIsWrong(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+/** Function to reset options divs after timeout post-selection*/
+function resetOptions() {
+    optionA.style.backgroundColor = "white";
+    optionA.style.color = "grey";
+
+    optionB.style.backgroundColor = "white";
+    optionB.style.color = "grey";
+
+    optionC.style.backgroundColor = "white";
+    optionC.style.color = "grey";
 }
