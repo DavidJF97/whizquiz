@@ -57,7 +57,7 @@ let questions = [
         question: "The Kingdom Of Hyrule Is The Main Setting For Which Classic Video Game Franchise",
         imgSrc: "assets/images/hyrule.jpg",
         optionA: "Legend of Korra",
-        optionB: "Legend of Zelda.",
+        optionB: "Legend of Zelda",
         optionC: "Legend of Aang",
         correct: "B"
     }, {
@@ -69,7 +69,7 @@ let questions = [
         correct: "A"
     }, {
         question: "Which Game Series Features Cities Called Vice City, Liberty City, And San Andreas?",
-        imgSrc: "assets/images/Los-Santos-San-Andreas-1920x1200.jpgassets/images/",
+        imgSrc: "assets/images/Los-Santos-San-Andreas-1920x1200.jpg",
         optionA: "Different Cities: The Videogame",
         optionB: "Sim City",
         optionC: "Grand Theft Auto.",
@@ -84,9 +84,9 @@ let questions = [
     }
 ];
 
-/**Variables for questions */
+/**Variables for questions and score*/
 
-let lastQuestion = question.length - 1;
+let lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let score = 0;
 
@@ -98,6 +98,7 @@ scoreDisplay.textContent = score;
 
 /**Function to render questions*/
 function renderQuestion() {
+
     let q = questions[runningQuestion];
 
     question.innerHTML = "<p>"+ q.question +"</p>";
@@ -109,12 +110,12 @@ function renderQuestion() {
 
 renderQuestion();
 
+/**Event listeners for answer selection */
+optionA.addEventListener("click", checkAnswer);
+optionB.addEventListener("click", checkAnswer);
+optionC.addEventListener("click", checkAnswer);
+
 /**Function to check answers */
-
-    optionA.addEventListener("click", checkAnswer);
-    optionB.addEventListener("click", checkAnswer);
-    optionC.addEventListener("click", checkAnswer);
-
 function checkAnswer() {
 
     if ( this.value == questions[runningQuestion].correct) {
@@ -122,25 +123,34 @@ function checkAnswer() {
         scoreDisplay.textContent = score;
         this.style.backgroundColor = "green";
         this.style.color = "white";
-        runningQuestion++;
-        setTimeout(nextQuestion, 1000);
+        runningQuestion++;;
+        
     } else {
         this.style.backgroundColor = "red";
         this.style.color = "white";
-        runningQuestion++;
-        setTimeout(nextQuestion, 1000);
+        runningQuestion++;;
+        
+    }
+
+    if (runningQuestion < lastQuestion){
+        setTimeout(nextQuestion, 1000)
+    } else {
+        setTimeout(endGame, 1000);
     }
 }
 
 /**Function to move on to next question after player's choice is checked */
 function nextQuestion() {
 
-    resetOptions()
-    renderQuestion()
+    resetOptions();
+    renderQuestion();
+    window.scrollTo(0, 0);
+    progress.textContent= runningQuestion+1+"/10";
 }
 
 /** Function to reset options divs after timeout post-selection*/
 function resetOptions() {
+
     optionA.style.backgroundColor = "white";
     optionA.style.color = "grey";
 
@@ -149,4 +159,10 @@ function resetOptions() {
 
     optionC.style.backgroundColor = "white";
     optionC.style.color = "grey";
+}
+
+/**Function to redirect to end page at end of quiz */
+function endGame() {
+
+    window.location = 'highscores.html';
 }
