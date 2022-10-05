@@ -33,13 +33,12 @@ h2, i {
     flex-direction: column;
 }
 
-#welcome-box {
+#welcome-box, #endgame-options {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 10%;
 }
 
 
@@ -58,4 +57,19 @@ h2, i {
 
 .btn:hover {
     transform: scale(1.25);
+}
+
+/* style for score submit form */
+#save-score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 40%;
+    height: 50px;
+    font-size: 2rem;
+    text-align: center;
 }

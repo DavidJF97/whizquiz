@@ -163,6 +163,7 @@ function resetOptions() {
 
 /**Function to redirect to end page at end of quiz */
 function endGame() {
-
-    window.location = 'highscores.html';
+    /**Saving players score to local storage */
+    localStorage.setItem("playerScore", score);
+    window.location = "/quizend.html";
 }
