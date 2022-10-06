@@ -133,9 +133,9 @@ function checkAnswer() {
     }
 
     if (runningQuestion <= lastQuestion){
-        setTimeout(nextQuestion, 1000)
+        setTimeout(nextQuestion, 500)
     } else {
-        setTimeout(endGame, 1000);
+        setTimeout(endGame, 500);
     }
 }
 
@@ -165,5 +165,5 @@ function resetOptions() {
 function endGame() {
     /**Saving players score to local storage */
     localStorage.setItem("playerScore", score);
-    window.location = "/quizend.html";
+    window.location = "quizend.html";
 }
