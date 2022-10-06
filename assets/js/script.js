@@ -35,7 +35,7 @@ let questions = [
     }, {
         question: "Nintendo Began As A Company Selling Which Products?",
         imgSrc: "assets/images/Nintendo_logo_red_r.png",
-        optionA: "Televisions",
+        optionA: "TVs",
         optionB: "Board Games",
         optionC: "Playing cards",
         correct: "C"
@@ -51,7 +51,7 @@ let questions = [
         imgSrc: "assets/images/consoles.jpg",
         optionA: "The Xbox 360",
         optionB: "The NES",
-        optionC: "The Playstation 2",
+        optionC: "The PS2",
         correct: "C"
     }, {
         question: "The Kingdom Of Hyrule Is The Main Setting For Which Classic Video Game Franchise",
@@ -70,7 +70,7 @@ let questions = [
     }, {
         question: "Which Game Series Features Cities Called Vice City, Liberty City, And San Andreas?",
         imgSrc: "assets/images/Los-Santos-San-Andreas-1920x1200.jpg",
-        optionA: "Different Cities: The Videogame",
+        optionA: "Cities: The Videogame",
         optionB: "Sim City",
         optionC: "Grand Theft Auto.",
         correct: "C"
@@ -132,7 +132,7 @@ function checkAnswer() {
         
     }
 
-    if (runningQuestion < lastQuestion){
+    if (runningQuestion <= lastQuestion){
         setTimeout(nextQuestion, 1000)
     } else {
         setTimeout(endGame, 1000);

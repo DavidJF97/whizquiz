@@ -62,11 +62,39 @@
     transform: scale(1.25);
 }
 
-.correct {
-    background-color: green;
+/* for medium screen sizes from 1800px wide and down */
+@media screen and (max-width: 1080px) {
+
+    .options {
+        width: 61rem;
+        height: 10rem;
+    }
+    
+    .options:hover {
+        transform: scale(1);
+    }
+
+    #question-pic {
+        height: 40rem;
+    }
+
 }
 
-.incorrect {
-    background-color: red;
-}
+/* for medium screen sizes from 650px wide and down */
+@media screen and (max-width: 650px) {
 
+    .options {
+        width: 30rem;
+    }
+
+    #question-pic {
+        display: none;
+    }
+
+    #hud {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
