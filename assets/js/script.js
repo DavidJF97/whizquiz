@@ -40,7 +40,7 @@ let questions = [
         optionC: "Playing cards",
         correct: "C"
     }, {
-        question: "In Which Game Do Players Compete In A Futuristic Version Of Soccer With Cars",
+        question: "In Which Game Do Players Compete In A Futuristic Version Of Soccer With Cars?",
         imgSrc: "assets/images/Rocket-League-Feature-Cropped-1.avif",
         optionA: "Rocket League",
         optionB: "Car Soccer 2020",
@@ -54,7 +54,7 @@ let questions = [
         optionC: "The PS2",
         correct: "C"
     }, {
-        question: "The Kingdom Of Hyrule Is The Main Setting For Which Classic Video Game Franchise",
+        question: "The Kingdom Of Hyrule Is The Main Setting For Which Classic Video Game Franchise? ",
         imgSrc: "assets/images/hyrule.jpg",
         optionA: "Legend of Korra",
         optionB: "Legend of Zelda",
