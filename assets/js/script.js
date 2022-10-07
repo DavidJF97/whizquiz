@@ -1,6 +1,4 @@
-const start = document.getElementById("start");
-const quiz =  document.getElementById("quiz");
-const progress = document.getElementById("question-num")
+const progress = document.getElementById("question-num");
 const question = document.getElementById("question");
 const questionPic = document.getElementById("question-pic");
 const optionA = document.getElementById("optionA");
@@ -123,19 +121,19 @@ function checkAnswer() {
         scoreDisplay.textContent = score;
         this.style.backgroundColor = "green";
         this.style.color = "white";
-        runningQuestion++;;
+        runningQuestion++;
         
     } else {
         this.style.backgroundColor = "red";
         this.style.color = "white";
-        runningQuestion++;;
+        runningQuestion++;
         
     }
 
     if (runningQuestion <= lastQuestion){
-        setTimeout(nextQuestion, 500)
+        setTimeout(nextQuestion, 200);
     } else {
-        setTimeout(endGame, 500);
+        setTimeout(endGame, 200);
     }
 }
 
